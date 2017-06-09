@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+# A script used to test written functions, classess, etc.
+# The same purpose as foo.py
+
 from receipt import Receipt
 from get import get_data
 from nalogru import verify_receipt_nalogru

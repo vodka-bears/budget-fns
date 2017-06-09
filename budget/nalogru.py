@@ -18,7 +18,7 @@ def get_receipt_nalogru(fn, fd, fpd, login, password):
         response = s.get(url, headers = headers,
                      auth = (login, password))
     if (response.status_code == 202):
-        raise requests.RequestException("Reciept not found")
+        raise requests.RequestException("Timed out")
     if (not response.ok):
         response.raise_for_status()
     return(response.json()["document"]["receipt"])
