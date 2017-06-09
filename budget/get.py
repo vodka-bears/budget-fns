@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# Temporary script to be replaced with GUI
+# Temporary script to be replaced with GUI 
 
 from nalogru import get_receipt_nalogru
 from requests import HTTPError, ConnectionError, RequestException
