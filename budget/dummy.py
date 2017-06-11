@@ -3,17 +3,18 @@
 # A script used to test written functions, classess, etc.
 # The same purpose as foo.py
 
-from receipt import Receipt
-from get import get_data
-from nalogru import verify_receipt_nalogru
+from scan import scan_code, parse_code
+import default
 
+q = parse_code(scan_code("/dev/video0", (640,480)))
 
-data = get_data(fn = "8710000100461774",
-                fd = "0000013080", fpd = "4110138629")
-if (data == None):
-    print("fail")
-    exit(1)
-r = Receipt(data)
+if q.verify():
+    print("The reciept is verified")
+else:
+    print("FAKE RECIEPT")
+
+r = q.get(default.login, default.password)
+
 for item in r.items:
     print("%10s %32s %7.2f %7.3f %7.2f" %
           (item.code, item.name, item.price, item.quantity, item.sum))
@@ -22,8 +23,3 @@ print(r.buytime.strftime("%d %B %Y, %H:%M"))
 print(r.user)
 print(r.inn)
 print(r.operator)
-ok = verify_receipt_nalogru(r.fn, r.fd, r.fpd, r.paid_sum, r.buytime, r.optype)
-if ok:
-    print("Verified")
-else:
-    print("Not verified")
