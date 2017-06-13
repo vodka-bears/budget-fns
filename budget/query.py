@@ -16,8 +16,8 @@ class Query():
                                                self.date,
                                                self.optype)
         return self.response
-    def get(self,login,password):
+    def get(self, login, password, deviceid, deviceos):
         response = get_receipt_nalogru(self.fn, self.fd, self.fpd,
-                                       login, password)
+                                       login, password, deviceid, deviceos)
         receipt = Receipt(response)
         return receipt

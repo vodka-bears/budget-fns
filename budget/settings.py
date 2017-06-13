@@ -6,7 +6,7 @@ def get_config_default():
     config.read_dict({"Basic": {
         "login": "", "password": "",
         "Device-ID" : "000000000000000",
-        "Device-OS" : "Python3"
+        "Device-OS" : "Python 3"
         }})
     return config
 def write_config_file(config,filename = "settings.ini"):

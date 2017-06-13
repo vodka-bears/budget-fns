@@ -27,8 +27,7 @@ def scan_code(device, size):
         codes = zbarlight.scan_codes('qrcode', image)
         if codes:
             code = codes[0]
-            pygame.display.quit()
-            break
+            capture = False
         for event in pygame.event.get():
             if event.type == QUIT:
                 capture = False
@@ -45,7 +44,10 @@ def parse_code(code):
     fpd = parsed["fp"][0]
     paid_sum = float(parsed["s"][0])
     optype = int(parsed["n"][0])
-    date = datetime.strptime(parsed["t"][0], "%Y%m%dT%H%M%S")
+    strdate = parsed["t"][0]
+    if len(strdate) > 13:
+        strdate = strdate[0:13]
+    date = datetime.strptime(strdate, "%Y%m%dT%H%M")
     q = Query(fn, fd, fpd, paid_sum, date, optype)
     return q
     

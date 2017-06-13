@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # A script used to test written functions, classess, etc.
 # The same purpose as dummy.py
