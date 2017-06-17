@@ -8,6 +8,7 @@ DEVICE = '/dev/video0'
 SIZE = (640, 480)
 FILENAME = 'capture.png'
 
+
 def camstream():
     pygame.init()
     pygame.camera.init()
@@ -18,9 +19,9 @@ def camstream():
     capture = True
     while capture:
         screen = camera.get_image(screen)
-        display.blit(screen, (0,0))
+        display.blit(screen, (0, 0))
         pygame.display.flip()
-        string = pygame.image.tostring(screen, "RGBA",False)
+        string = pygame.image.tostring(screen, "RGBA", False)
         image = Image.frombytes("RGBA", SIZE, string)
         codes = zbarlight.scan_codes('qrcode', image)
         if codes:
@@ -34,6 +35,7 @@ def camstream():
     camera.stop()
     pygame.quit()
     return
+
 
 if __name__ == '__main__':
     camstream()

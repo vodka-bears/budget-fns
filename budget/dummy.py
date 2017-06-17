@@ -7,7 +7,7 @@ from scan import scan_code, parse_code
 from settings import get_config_file
 import default
 
-q = parse_code(scan_code("/dev/video0", (640,480)))
+q = parse_code(scan_code("/dev/video0", (640, 480)))
 
 if q.verify():
     print("The receipt is verified")

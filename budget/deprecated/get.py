@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 
-# Temporary script to be replaced with GUI 
+# Temporary script to be replaced with GUI
 
 from nalogru import get_receipt_nalogru
 from requests import HTTPError, ConnectionError, RequestException
 from settings import get_config_file, write_config_file
 import default
+
 
 def get_data(fn, fd, fpd):
     config = get_config_file()
@@ -17,7 +18,7 @@ def get_data(fn, fd, fpd):
     login = config["Basic"]["login"]
     password = config["Basic"]["password"]
     try:
-        data=(get_receipt_nalogru(fn,fd,fpd,login,password))
+        data = (get_receipt_nalogru(fn, fd, fpd, login, password))
     except ConnectionError:
         print("No Internet")
         return None

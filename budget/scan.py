@@ -9,6 +9,7 @@ from urllib.parse import urlparse, parse_qs
 from query import Query
 from datetime import datetime
 
+
 def scan_code(device, size):
     pygame.init()
     pygame.camera.init()
@@ -20,7 +21,7 @@ def scan_code(device, size):
     capture = True
     while capture:
         screen = camera.get_image(screen)
-        display.blit(screen, (0,0))
+        display.blit(screen, (0, 0))
         pygame.display.flip()
         string = pygame.image.tostring(screen, "RGBA", False)
         image = Image.frombytes("RGBA", size, string)
@@ -37,6 +38,7 @@ def scan_code(device, size):
     code = code[2: len(code) - 1]
     return code
 
+
 def parse_code(code):
     parsed = parse_qs(code)
     fn = parsed["fn"][0]
@@ -50,4 +52,3 @@ def parse_code(code):
     date = datetime.strptime(strdate, "%Y%m%dT%H%M")
     q = Query(fn, fd, fpd, paid_sum, date, optype)
     return q
-    
