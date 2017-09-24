@@ -6,13 +6,15 @@ def get_config_default():
     config.read_dict({"Basic": {
         "login": "", "password": "",
         "Device-ID" : "000000000000000",
-        "Device-OS" : "Python 3"
+        "Device-OS" : "Python 3",
+        #"Database" : "~/.budget-fns/database.db"
+        "Database" : ":memory:"
         }})
     return config
-def write_config_file(config,filename = "settings.ini"):
+def write_config_file(config,filename = "~/.budget-fns/settings.ini"):
     with open(filename,"w") as file:
         config.write(file)
-def get_config_file(filename = "settings.ini"):
+def get_config_file(filename = "~/.budget-fns/settings.ini"):
     if (isfile(filename)):
         config = configparser.ConfigParser()
         config.read(filename)

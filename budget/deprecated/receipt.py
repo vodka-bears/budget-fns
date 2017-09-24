@@ -8,8 +8,13 @@ class Entry():
         self.price = float(item["price"])/100
         self.quantity = float(item["quantity"])
         self.name = item["name"]
-        self.code = self.name.split(" ")[0]
-        self.name = self.name[len(self.code) + 1:]
+        self.barcode = ""
+        self.nds10 = 0
+        self.nds18 = 0
+        if "nds18" in item:
+            self.nds18 = float(item["nds18"])/100
+        if "nds10" in item:
+            self.nds10 = float(item["nds10"])/100
             
 
 class Receipt():
